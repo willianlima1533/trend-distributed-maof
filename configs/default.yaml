@@ -1,0 +1,6 @@
+orchestrator:
+  port: 8080
+agent:
+  count: 5
+monitor:
+  interval: 10
