@@ -9,3 +9,8 @@ class NoAgentsAvailableException(InvalidTaskException):
 
 class TaskNotFoundException(InvalidTaskException):
     pass
+
+class AgentNotFoundException(Exception):
+    """Exceção levantada quando um agente não é encontrado no registro."""
+    pass
+

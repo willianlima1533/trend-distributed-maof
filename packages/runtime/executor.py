@@ -1,22 +1,33 @@
-import logging
-from typing import Dict, List
-from ..core.engine import Engine
-from ..core.types import Agent, Task
+import heapq
+import time
 
-logger = logging.getLogger(__name__)
+class TaskExecutor:
+    def __init__(self):
+        # Fila de prioridade: (prioridade, timestamp, tarefa)
+        self.queue = []
 
-class Executor:
-    def __init__(self, engine: Engine):
-        self.engine = engine
+    def schedule_task(self, task_name, priority):
+        """
+        Agenda uma nova tarefa. Menor valor de prioridade = executada primeiro.
+        """
+        heapq.heappush(self.queue, (priority, time.time(), task_name))
+        print(f"[LOG] Tarefa '{task_name}' agendada com prioridade {priority}")
 
-    def run(self, task: Task):
-        # Implement task execution logic here
-        pass
+    def execute_next(self):
+        """
+        Executa a próxima tarefa da fila baseada na prioridade.
+        """
+        if not self.queue:
+            return None
+        priority, _, task = heapq.heappop(self.queue)
+        print(f"[LOG] Executando: {task} (Prioridade: {priority})")
+        return task
 
-    def start(self):
-        # Implement executor start logic here
-        pass
+# Exemplo de uso para teste rápido
+if __name__ == "__main__":
+    executor = TaskExecutor()
+    executor.schedule_task("Limpeza de Memoria", 2)
+    executor.schedule_task("Processamento de Dados", 1)
+    
+    executor.execute_next() # Deve rodar o Processamento de Dados (pri 1)
 
-    def stop(self):
-        # Implement executor stop logic here
-        pass
