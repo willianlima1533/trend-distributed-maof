@@ -17,7 +17,7 @@
 | Project | Status | Focus |
 | :--- | :--- | :--- |
 | **NEXUS_V6** | Operational | Logistical Automation & System Monitoring |
-| **TREND-DISTRIBUTED** | In Progress | Distributed Data Analysis |
+| **TREND-DISTRIBUTED** | Operational | Distributed Data Analysis |
 | **HEKS-QUANTUM** | Research | Algorithmic Trading (EUR/USD) |
 
 ---
